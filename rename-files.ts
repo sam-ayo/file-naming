@@ -5,7 +5,7 @@ function isDirectory(path: string): boolean{
     return lstatSync(`${path}`).isDirectory();
 }
 
-function standardConvertionFileRename (file: string): string{
+function hypenFileName (file: string): string{
     let newName = "";
     for (const char of file){
         if(char === char.toUpperCase() && char !== "." && char !== "-"){
@@ -30,14 +30,10 @@ function runRename(path: string, allNames: string[] = []){
             runRename(filePath, allNames);
         }
         else{
-            const newName = standardConvertionFileRename(file);
+            const newName = hypenFileName(file);
             rename(filePath, `${path}/${newName}`, error=> console.log(error))
             allNames.push(newName);
         }
     })
     return allNames;
 }
-
-
-const basePath = `${__dirname}/test`;
-console.log(runRename(basePath))
