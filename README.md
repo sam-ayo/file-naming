@@ -1,2 +1,2 @@
 # file-naming
-I had a challenge of renaming a lot of camel cased, underscore, pascal cased file names to hypen file naming convention. 
+I had the task of transforming numerous file names with various conventions (camel case, underscore, and Pascal case) into a consistent naming convention using hyphens.
