@@ -19,7 +19,7 @@ function hypenFileName (file: string): string{
     return newName;
 }
 
-function runRename(path: string, allNames: string[] = []){
+function runRename(path: string){
     let files: string[] = [];
     if(isDirectory(path)){
         files = readdirSync(path);
@@ -27,13 +27,11 @@ function runRename(path: string, allNames: string[] = []){
     files.forEach((file)=>{
         const filePath = `${path}/${file}`
         if(isDirectory(filePath)){
-            runRename(filePath, allNames);
+            runRename(filePath);
         }
         else{
             const newName = hypenFileName(file);
             rename(filePath, `${path}/${newName}`, error=> console.log(error))
-            allNames.push(newName);
         }
     })
-    return allNames;
 }
